@@ -118,7 +118,7 @@ export default function AddProfileModal({ onClose, onAdd }: AddProfileModalProps
           </div>
 
           <p className="text-xs text-[var(--text-tertiary)]">
-            We&apos;ll use their current info as a baseline. You&apos;ll know the moment anything changes.
+            We&apos;ll use their current info as a baseline. <a href="https://app.skylarq.ai" target="_blank" rel="noopener noreferrer" className="text-[var(--accent)] hover:underline">Sign in to Skylarq</a> to enable live tracking.
           </p>
 
           <div className="flex gap-3 pt-2">
@@ -132,21 +132,6 @@ export default function AddProfileModal({ onClose, onAdd }: AddProfileModalProps
               </svg>
               Start Stalking
             </button>
-          </div>
-
-          <div className="mt-4 pt-4 border-t border-[var(--border)]">
-            <a
-              href="https://app.skylarq.ai"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 text-xs text-[var(--text-tertiary)] hover:text-[var(--accent)] transition-colors"
-            >
-              <span>&#128640;</span>
-              Or monitor this profile for real on Skylarq
-              <svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M6 3h7v7M13 3L6 10" />
-              </svg>
-            </a>
           </div>
         </form>
       </div>

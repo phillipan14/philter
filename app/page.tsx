@@ -57,30 +57,10 @@ export default function Home() {
   // Dashboard view
   return (
     <main className="relative z-10 mx-auto max-w-2xl px-4 py-10 sm:py-16">
-      {/* Skylarq-powered banner */}
-      <div className="mb-8 rounded-xl border border-[var(--border)] bg-[var(--bg-secondary)] px-4 py-3">
-        <div className="flex items-center justify-center gap-2 text-xs text-[var(--text-secondary)] mb-2">
-          <span>&#9889;</span>
-          <span>Powered by <a href="https://skylarq.ai" target="_blank" rel="noopener noreferrer" className="font-semibold text-[var(--accent)] hover:underline">Skylarq AI</a> &mdash; the engine behind real LinkedIn profile monitoring</span>
-        </div>
-        <div className="flex items-center justify-center gap-3">
-          <a
-            href="https://app.skylarq.ai"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1.5 rounded-lg bg-gradient-to-r from-[var(--accent)] to-purple-500 px-4 py-2 text-xs font-medium text-white transition-opacity hover:opacity-90"
-          >
-            <span>&#128640;</span>
-            Set up real monitoring on Skylarq
-            <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M6 3h7v7M13 3L6 10" />
-            </svg>
-          </a>
-          <span className="text-[10px] text-[var(--text-tertiary)]">Free account required</span>
-        </div>
-        <p className="text-center text-[10px] text-[var(--text-tertiary)] mt-2">
-          Below is a demo with sample data. Create a Skylarq account to monitor real profiles.
-        </p>
+      {/* Demo notice */}
+      <div className="mb-8 rounded-xl border border-[var(--border)] bg-[var(--bg-secondary)] px-4 py-2.5 text-center text-xs text-[var(--text-tertiary)]">
+        <span className="mr-1.5">&#128064;</span>
+        Demo mode &mdash; exploring with sample data. <a href="https://app.skylarq.ai" target="_blank" rel="noopener noreferrer" className="text-[var(--accent)] hover:underline">Sign in to Skylarq</a> to monitor real profiles.
       </div>
 
       <Header
