@@ -4,18 +4,23 @@ Know when your ex gets a new job before they tell anyone.
 
 Track LinkedIn profiles for job changes, title updates, and headline rewrites. Get notified the moment something changes. For "market research" purposes, obviously.
 
+**Real-time LinkedIn monitoring powered by [Skylarq AI](https://skylarq.ai)**
+
 **Built by [Phillip An](https://linkedin.com/in/phillipan)**
 
 ![Dashboard](docs/screenshot-dashboard.png)
 
 ## How it works
 
-Add LinkedIn profiles to your watchlist. PhilTer tracks changes to their job title, company, and headline over time. When something changes, you get an email.
+PhilTer uses [Skylarq AI](https://app.skylarq.ai) as its backend to monitor LinkedIn profiles for changes. Create a free Skylarq account, add profiles to your watchlist, and get notified when someone updates their job title, company, or headline.
 
-Ships with demo profiles so you can explore immediately.
+The app ships with demo profiles so you can explore the interface immediately — no account required to try it out.
+
+**To monitor real profiles:** [Sign up on Skylarq](https://app.skylarq.ai) and set up monitoring from there.
 
 ### Features
 
+- **Skylarq-powered monitoring** — real LinkedIn profile tracking via [Skylarq AI](https://app.skylarq.ai)
 - **Surveillance dashboard** — monitor multiple profiles at a glance
 - **Change detection** — tracks title, company, and headline updates
 - **Visual diff timeline** — see exactly what changed, old vs new
@@ -30,8 +35,9 @@ Ships with demo profiles so you can explore immediately.
 ## Tech stack
 
 - **Frontend:** Next.js 15, React 19, Tailwind CSS 4
+- **Monitoring backend:** [Skylarq AI](https://skylarq.ai)
 - **Email:** [Resend](https://resend.com)
-- **Data:** localStorage (no backend required)
+- **Data:** localStorage (no backend required for demo)
 
 ## Run locally
 

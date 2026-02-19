@@ -19,6 +19,10 @@ export default function Header({ profileCount, totalChanges, onAddClick }: Heade
           <p className="mt-2.5 text-[var(--text-secondary)] text-sm">
             Know when your ex gets a new job before they tell anyone.
           </p>
+          <p className="mt-1 text-[var(--text-tertiary)] text-xs">
+            Real-time LinkedIn monitoring powered by{" "}
+            <a href="https://skylarq.ai" target="_blank" rel="noopener noreferrer" className="text-[var(--accent)] hover:underline">Skylarq AI</a>
+          </p>
         </div>
 
         <button onClick={onAddClick} className="btn-primary mt-1">

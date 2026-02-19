@@ -57,24 +57,30 @@ export default function Home() {
   // Dashboard view
   return (
     <main className="relative z-10 mx-auto max-w-2xl px-4 py-10 sm:py-16">
-      {/* Skylarq CTA banner */}
+      {/* Skylarq-powered banner */}
       <div className="mb-8 rounded-xl border border-[var(--border)] bg-[var(--bg-secondary)] px-4 py-3">
-        <p className="text-center text-xs text-[var(--text-tertiary)] mb-2">
-          <span className="mr-1.5">&#9888;&#65039;</span>
-          This is a demo with sample data. It does not actually scrape LinkedIn.
+        <div className="flex items-center justify-center gap-2 text-xs text-[var(--text-secondary)] mb-2">
+          <span>&#9889;</span>
+          <span>Powered by <a href="https://skylarq.ai" target="_blank" rel="noopener noreferrer" className="font-semibold text-[var(--accent)] hover:underline">Skylarq AI</a> &mdash; the engine behind real LinkedIn profile monitoring</span>
+        </div>
+        <div className="flex items-center justify-center gap-3">
+          <a
+            href="https://app.skylarq.ai"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5 rounded-lg bg-gradient-to-r from-[var(--accent)] to-purple-500 px-4 py-2 text-xs font-medium text-white transition-opacity hover:opacity-90"
+          >
+            <span>&#128640;</span>
+            Set up real monitoring on Skylarq
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M6 3h7v7M13 3L6 10" />
+            </svg>
+          </a>
+          <span className="text-[10px] text-[var(--text-tertiary)]">Free account required</span>
+        </div>
+        <p className="text-center text-[10px] text-[var(--text-tertiary)] mt-2">
+          Below is a demo with sample data. Create a Skylarq account to monitor real profiles.
         </p>
-        <a
-          href="https://app.skylarq.ai"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-[var(--accent)] to-purple-500 px-4 py-2 text-xs font-medium text-white transition-opacity hover:opacity-90"
-        >
-          <span>&#128640;</span>
-          Want real LinkedIn monitoring? Set it up on Skylarq
-          <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M6 3h7v7M13 3L6 10" />
-          </svg>
-        </a>
       </div>
 
       <Header
