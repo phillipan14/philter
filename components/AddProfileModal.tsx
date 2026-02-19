@@ -55,7 +55,7 @@ export default function AddProfileModal({ onClose, onAdd }: AddProfileModalProps
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-content animate-in" onClick={(e) => e.stopPropagation()}>
         <div className="flex items-center justify-between mb-6">
-          <h2 className="text-lg font-semibold">Add Profile to Watch</h2>
+          <h2 className="text-lg font-semibold">Who are we watching?</h2>
           <button
             onClick={onClose}
             className="text-[var(--text-tertiary)] hover:text-[var(--text-secondary)] transition-colors"
@@ -69,11 +69,11 @@ export default function AddProfileModal({ onClose, onAdd }: AddProfileModalProps
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label className="block text-xs font-medium text-[var(--text-secondary)] mb-1.5">
-              LinkedIn URL
+              Their LinkedIn URL
             </label>
             <input
               type="url"
-              placeholder="https://linkedin.com/in/username"
+              placeholder="You know it by heart"
               value={url}
               onChange={(e) => setUrl(e.target.value)}
               autoFocus
@@ -118,7 +118,7 @@ export default function AddProfileModal({ onClose, onAdd }: AddProfileModalProps
           </div>
 
           <p className="text-xs text-[var(--text-tertiary)]">
-            Title and company are used as the baseline. You&apos;ll be notified when they change.
+            We&apos;ll use their current info as a baseline. You&apos;ll know the moment anything changes.
           </p>
 
           <div className="flex gap-3 pt-2">
@@ -130,7 +130,7 @@ export default function AddProfileModal({ onClose, onAdd }: AddProfileModalProps
                 <circle cx="8" cy="8" r="6" />
                 <path d="M8 5v6M11 8H5" />
               </svg>
-              Start Watching
+              Start Stalking
             </button>
           </div>
         </form>

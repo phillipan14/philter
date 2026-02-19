@@ -106,9 +106,9 @@ export default function ProfileDetail({ profile, onBack }: ProfileDetailProps) {
       {changeGroups.length === 0 ? (
         <div className="card p-8 text-center">
           <p className="text-4xl mb-3">&#128064;</p>
-          <p className="text-[var(--text-secondary)]">No changes detected yet</p>
+          <p className="text-[var(--text-secondary)]">Suspiciously quiet</p>
           <p className="text-sm text-[var(--text-tertiary)] mt-1">
-            Suspiciously stable. We&apos;ll keep watching.
+            They haven&apos;t changed a thing. Either very stable or very good at hiding it.
           </p>
         </div>
       ) : (

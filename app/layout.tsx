@@ -4,11 +4,11 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "PhilTer — LinkedIn Profile Change Tracker",
   description:
-    "Monitor LinkedIn profiles for job changes, title updates, and headline rewrites. For market research purposes, obviously.",
+    "Know when your ex gets a new job before they tell anyone. Track LinkedIn profile changes for job titles, companies, and headlines.",
   openGraph: {
     title: "PhilTer — LinkedIn Profile Change Tracker",
     description:
-      "Monitor LinkedIn profiles for job changes. For market research purposes.",
+      "Know when your ex gets a new job before they tell anyone.",
     type: "website",
   },
 };

@@ -93,8 +93,9 @@ export default function Home() {
 function Footer({ onReset }: { onReset: () => void }) {
   return (
     <footer className="mt-20 flex flex-col items-center gap-3 text-xs text-[var(--text-tertiary)]">
+      <p className="text-[var(--text-tertiary)] italic mb-1">&ldquo;It&apos;s not stalking if it&apos;s on LinkedIn&rdquo;</p>
       <div className="flex items-center gap-1.5">
-        <span className="text-sm">&#128373;</span>
+        <span className="text-sm">&#128064;</span>
         <span>
           Built by{" "}
           <a

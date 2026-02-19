@@ -45,7 +45,7 @@ export default function ProfileCard({ profile, onSelect, onRemove }: ProfileCard
   const changeCount = profile.changes.length;
 
   return (
-    <div className="card p-5 cursor-pointer animate-in" onClick={() => onSelect(profile)}>
+    <div className={`card p-5 cursor-pointer animate-in${changeCount > 0 ? " card-has-changes" : ""}`} onClick={() => onSelect(profile)}>
       <div className="flex items-start gap-4">
         {/* Avatar */}
         <div className="shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-[var(--accent)] to-purple-500 flex items-center justify-center text-white font-semibold text-sm">
@@ -98,7 +98,7 @@ export default function ProfileCard({ profile, onSelect, onRemove }: ProfileCard
               </>
             ) : (
               <span className="text-xs text-[var(--text-tertiary)] italic">
-                No changes detected yet
+                Suspiciously quiet
               </span>
             )}
           </div>

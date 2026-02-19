@@ -1,23 +1,31 @@
 # PhilTer
 
-Monitor LinkedIn profiles for job changes, title updates, and headline rewrites. For market research purposes, obviously.
+Know when your ex gets a new job before they tell anyone.
+
+Track LinkedIn profiles for job changes, title updates, and headline rewrites. Get notified the moment something changes. For "market research" purposes, obviously.
 
 **Built by [Phillip An](https://linkedin.com/in/phillipan)**
 
+![Dashboard](docs/screenshot-dashboard.png)
+
 ## How it works
 
-Add LinkedIn profiles to your watchlist. PhilTer tracks changes to their job title, company, and headline over time. When something changes, you get notified via email.
+Add LinkedIn profiles to your watchlist. PhilTer tracks changes to their job title, company, and headline over time. When something changes, you get an email.
 
-Ships with demo data so you can explore the UI immediately.
+Ships with demo profiles so you can explore immediately.
 
 ### Features
 
-- **Profile watchlist** — add any LinkedIn profile by URL
+- **Surveillance dashboard** — monitor multiple profiles at a glance
 - **Change detection** — tracks title, company, and headline updates
-- **Visual timeline** — see every change with old/new diffs
-- **Email notifications** — get alerted when someone updates their profile (via Resend)
+- **Visual diff timeline** — see exactly what changed, old vs new
+- **Email alerts** — get notified when someone updates their profile (via Resend)
 - **Demo mode** — pre-loaded sample profiles with realistic change histories
 - **Local storage** — all data stays in your browser, no database needed
+
+![Timeline](docs/screenshot-timeline.png)
+
+![Add Profile](docs/screenshot-modal.png)
 
 ## Tech stack
 
