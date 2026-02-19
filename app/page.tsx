@@ -57,10 +57,24 @@ export default function Home() {
   // Dashboard view
   return (
     <main className="relative z-10 mx-auto max-w-2xl px-4 py-10 sm:py-16">
-      {/* Disclaimer banner */}
-      <div className="mb-8 rounded-xl border border-[var(--border)] bg-[var(--bg-secondary)] px-4 py-2.5 text-center text-xs text-[var(--text-tertiary)]">
-        <span className="mr-1.5">&#9888;&#65039;</span>
-        This app does not actually scrape LinkedIn. It&apos;s a demo. Please don&apos;t sue us.
+      {/* Skylarq CTA banner */}
+      <div className="mb-8 rounded-xl border border-[var(--border)] bg-[var(--bg-secondary)] px-4 py-3">
+        <p className="text-center text-xs text-[var(--text-tertiary)] mb-2">
+          <span className="mr-1.5">&#9888;&#65039;</span>
+          This is a demo with sample data. It does not actually scrape LinkedIn.
+        </p>
+        <a
+          href="https://app.skylarq.ai"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-[var(--accent)] to-purple-500 px-4 py-2 text-xs font-medium text-white transition-opacity hover:opacity-90"
+        >
+          <span>&#128640;</span>
+          Want real LinkedIn monitoring? Set it up on Skylarq
+          <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M6 3h7v7M13 3L6 10" />
+          </svg>
+        </a>
       </div>
 
       <Header
