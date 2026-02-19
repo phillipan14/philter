@@ -40,15 +40,30 @@ function fieldBadgeClass(field: string): string {
   }
 }
 
+const QUIET_MESSAGES = [
+  "Suspiciously quiet",
+  "No movement detected",
+  "Still lurking in silence",
+  "Eerily stable",
+];
+
+function getQuietMessage(id: string): string {
+  const idx = id.split("").reduce((a, c) => a + c.charCodeAt(0), 0);
+  return QUIET_MESSAGES[idx % QUIET_MESSAGES.length];
+}
+
 export default function ProfileCard({ profile, onSelect, onRemove }: ProfileCardProps) {
   const latestChange = profile.changes[0];
   const changeCount = profile.changes.length;
 
   return (
-    <div className={`card p-5 cursor-pointer animate-in${changeCount > 0 ? " card-has-changes" : ""}`} onClick={() => onSelect(profile)}>
+    <div
+      className={`card p-5 cursor-pointer animate-in group${changeCount > 0 ? " card-has-changes" : ""}`}
+      onClick={() => onSelect(profile)}
+    >
       <div className="flex items-start gap-4">
         {/* Avatar */}
-        <div className="shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-[var(--accent)] to-purple-500 flex items-center justify-center text-white font-semibold text-sm">
+        <div className="shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-[var(--accent)] to-purple-500 flex items-center justify-center text-white font-semibold text-sm ring-2 ring-transparent group-hover:ring-[var(--accent)]/30 transition-all">
           {profile.avatarInitials}
         </div>
 
@@ -63,8 +78,8 @@ export default function ProfileCard({ profile, onSelect, onRemove }: ProfileCard
                 e.stopPropagation();
                 onRemove(profile.id);
               }}
-              className="shrink-0 text-[var(--text-tertiary)] hover:text-[var(--danger)] transition-colors p-1"
-              title="Remove profile"
+              className="shrink-0 text-[var(--text-tertiary)] hover:text-[var(--danger)] transition-colors p-1 opacity-0 group-hover:opacity-100"
+              title="Let go (for now)"
             >
               <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
                 <path d="M4 4l8 8M12 4l-8 8" />
@@ -76,8 +91,8 @@ export default function ProfileCard({ profile, onSelect, onRemove }: ProfileCard
             {profile.currentTitle} @ {profile.currentCompany}
           </p>
 
-          <p className="text-xs text-[var(--text-tertiary)] mt-1 truncate">
-            {profile.headline}
+          <p className="text-xs text-[var(--text-tertiary)] mt-1 truncate italic">
+            &ldquo;{profile.headline}&rdquo;
           </p>
 
           {/* Latest change or no changes */}
@@ -97,8 +112,9 @@ export default function ProfileCard({ profile, onSelect, onRemove }: ProfileCard
                 )}
               </>
             ) : (
-              <span className="text-xs text-[var(--text-tertiary)] italic">
-                Suspiciously quiet
+              <span className="text-xs text-[var(--text-tertiary)] italic flex items-center gap-1.5">
+                <span className="inline-block h-1.5 w-1.5 rounded-full bg-[var(--text-tertiary)] animate-pulse" />
+                {getQuietMessage(profile.id)}
               </span>
             )}
           </div>

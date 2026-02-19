@@ -40,7 +40,6 @@ function fieldBadgeClass(field: string): string {
   }
 }
 
-// Group changes by timestamp (changes that happened at the same time)
 function groupChanges(changes: Change[]): { timestamp: string; changes: Change[] }[] {
   const groups: Map<string, Change[]> = new Map();
   for (const change of changes) {
@@ -54,8 +53,16 @@ function groupChanges(changes: Change[]): { timestamp: string; changes: Change[]
   }));
 }
 
+function getStalkerScore(changes: number): { label: string; emoji: string; color: string } {
+  if (changes === 0) return { label: "Nothing yet", emoji: "\u{1F634}", color: "var(--text-tertiary)" };
+  if (changes <= 2) return { label: "Mild interest", emoji: "\u{1F440}", color: "var(--text-secondary)" };
+  if (changes <= 5) return { label: "Invested", emoji: "\u{1F50D}", color: "var(--warning)" };
+  return { label: "Obsessed", emoji: "\u{1F6A8}", color: "var(--danger)" };
+}
+
 export default function ProfileDetail({ profile, onBack }: ProfileDetailProps) {
   const changeGroups = groupChanges(profile.changes);
+  const score = getStalkerScore(profile.changes.length);
 
   return (
     <div className="animate-in">
@@ -67,13 +74,13 @@ export default function ProfileDetail({ profile, onBack }: ProfileDetailProps) {
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
           <path d="M10 3L5 8l5 5" />
         </svg>
-        Back to all profiles
+        Back to surveillance
       </button>
 
       {/* Profile header */}
-      <div className="card p-6 mb-8">
+      <div className="card p-6 mb-6">
         <div className="flex items-start gap-4">
-          <div className="shrink-0 w-16 h-16 rounded-full bg-gradient-to-br from-[var(--accent)] to-purple-500 flex items-center justify-center text-white font-semibold text-lg">
+          <div className="shrink-0 w-16 h-16 rounded-full bg-gradient-to-br from-[var(--accent)] to-purple-500 flex items-center justify-center text-white font-semibold text-lg ring-2 ring-[var(--accent)]/20">
             {profile.avatarInitials}
           </div>
           <div className="flex-1">
@@ -81,7 +88,9 @@ export default function ProfileDetail({ profile, onBack }: ProfileDetailProps) {
             <p className="text-[var(--text-secondary)] mt-1">
               {profile.currentTitle} @ {profile.currentCompany}
             </p>
-            <p className="text-sm text-[var(--text-tertiary)] mt-1">{profile.headline}</p>
+            <p className="text-sm text-[var(--text-tertiary)] mt-1 italic">
+              &ldquo;{profile.headline}&rdquo;
+            </p>
             <div className="flex items-center gap-4 mt-3 text-xs text-[var(--text-tertiary)]">
               <a
                 href={profile.linkedinUrl}
@@ -89,24 +98,39 @@ export default function ProfileDetail({ profile, onBack }: ProfileDetailProps) {
                 rel="noopener noreferrer"
                 className="text-[var(--accent)] hover:underline"
               >
-                View LinkedIn
+                Stalk on LinkedIn
               </a>
-              <span>Tracking since {formatDate(profile.addedAt)}</span>
-              <span>{profile.changes.length} changes detected</span>
+              <span>Watching since {formatDate(profile.addedAt)}</span>
             </div>
           </div>
         </div>
       </div>
 
+      {/* Intel summary */}
+      <div className="grid grid-cols-3 gap-3 mb-8">
+        <div className="card p-3 text-center">
+          <p className="text-lg font-bold text-[var(--text-primary)]">{profile.changes.length}</p>
+          <p className="text-[10px] text-[var(--text-tertiary)] uppercase tracking-wider">Changes caught</p>
+        </div>
+        <div className="card p-3 text-center">
+          <p className="text-lg font-bold text-[var(--text-primary)]">{changeGroups.length}</p>
+          <p className="text-[10px] text-[var(--text-tertiary)] uppercase tracking-wider">Life events</p>
+        </div>
+        <div className="card p-3 text-center">
+          <p className="text-lg font-bold" style={{ color: score.color }}>{score.emoji} {score.label}</p>
+          <p className="text-[10px] text-[var(--text-tertiary)] uppercase tracking-wider">Intel level</p>
+        </div>
+      </div>
+
       {/* Change timeline */}
       <h3 className="text-sm font-medium text-[var(--text-secondary)] mb-4 uppercase tracking-wider">
-        Change History
+        Evidence Log
       </h3>
 
       {changeGroups.length === 0 ? (
         <div className="card p-8 text-center">
-          <p className="text-4xl mb-3">&#128064;</p>
-          <p className="text-[var(--text-secondary)]">Suspiciously quiet</p>
+          <p className="text-4xl mb-3">&#128564;</p>
+          <p className="text-[var(--text-secondary)] font-medium">Radio silence</p>
           <p className="text-sm text-[var(--text-tertiary)] mt-1">
             They haven&apos;t changed a thing. Either very stable or very good at hiding it.
           </p>
@@ -115,13 +139,9 @@ export default function ProfileDetail({ profile, onBack }: ProfileDetailProps) {
         <div className="space-y-0">
           {changeGroups.map((group, i) => (
             <div key={group.timestamp} className="relative pl-10 pb-8">
-              {/* Timeline connector */}
               {i < changeGroups.length - 1 && <div className="timeline-line" />}
-
-              {/* Dot */}
               <div className="absolute left-[14px] top-[6px] timeline-dot" />
 
-              {/* Date header */}
               <div className="flex items-center gap-2 mb-3">
                 <span className="text-sm font-medium text-[var(--text-primary)]">
                   {formatDate(group.timestamp)}
@@ -129,9 +149,13 @@ export default function ProfileDetail({ profile, onBack }: ProfileDetailProps) {
                 <span className="text-xs text-[var(--text-tertiary)]">
                   {formatTime(group.timestamp)}
                 </span>
+                {group.changes.length > 1 && (
+                  <span className="text-[10px] text-[var(--warning)] font-medium uppercase">
+                    Multi-update
+                  </span>
+                )}
               </div>
 
-              {/* Changes in this group */}
               <div className="space-y-2">
                 {group.changes.map((change) => (
                   <div key={change.id} className="card p-4">
